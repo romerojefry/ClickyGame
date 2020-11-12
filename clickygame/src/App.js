@@ -24,7 +24,8 @@ class App extends Component {
         <Title>Dogs List</Title>
         {this.state.Dogs.map(Dogs => (
           <Cardd
-            
+            id={Dogs.id}
+            image={Dogs.image}
           />
         ))}
       </Wrapper>
