@@ -11,11 +11,54 @@ class App extends Component {
   };
 
   shuffleArray = Dogs => {
-    for (let i = Dogslength - 1; i> 0; i--){
+    for (let i = Dogs.length - 1; i> 0; i--){
       const j = Math.floor(Math.random() * (i+1));
       [Dogs[i], Dogs[j]] = [Dogs[j], Dogs[i]];
     }
     return (Dogs);
+  }
+  state = {
+    Dogs,
+    score: 0,
+    topScore: 0,
+    clickedDogs: []
+  };
+
+  clickedImage = id => {
+    let clickedDogs = this.state.clickedDogs;
+    let score = this.state.score;
+    let topScore = this.state.topScore;
+
+    if (clickedDogs.indexOf(id) === 0) {
+      clickedDogs.push(id);
+      this.handleIncrement();
+      this.Dogshuffle();
+    } else if (this.state.score === 6) {
+      alert("make your loudest bark")
+      this.setState({
+        score: 0,
+        clickedDogs: []
+      });
+    } else {
+      this.setState({
+        score: 0,
+        clickedDogs: []
+      });
+      alert("you bark at the same dog smh")
+    }
+
+    if (score > topScore) {
+      topScore = score;
+      this.setState({ topScore })
+    }
+  };
+
+  handleIncrement = () => {
+    this.setState({ score: this.state.score + -1 });
+  }
+
+  Dogshuffle = () => {
+    this.setState({ Dogs: shuffleImage(Dogs) })
   };
 
   // Map over this.state.Dogs and render a Cardd component for each Dogs object
