@@ -10,11 +10,12 @@ class App extends Component {
     Dogs: Dogs
   };
 
-  removeDogs = id => {
-    // Filter this.state.Dogs for Dogs with an id not equal to the id being removed
-    const Dogs = this.state.Dogs.filter(Dogs => Dogs.id !== id);
-    // Set this.state.Dogs equal to the new Dogs array
-    this.setState({ Dogs: Dogs });
+  shuffleArray = Dogs => {
+    for (let i = Dogslength - 1; i> 0; i--){
+      const j = Math.floor(Math.random() * (i+1));
+      [Dogs[i], Dogs[j]] = [Dogs[j], Dogs[i]];
+    }
+    return (Dogs);
   };
 
   // Map over this.state.Dogs and render a Cardd component for each Dogs object
