@@ -4,12 +4,12 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import Dogs from "./Dogs.json";
 
-  shuffleArray = Dogs => {
+  shuffleArray = (Dogs) => {
     for (let i = Dogs.length - 1; i> 0; i--){
       const j = Math.floor(Math.random() * (i+1));
-      [Dogs[i], Dogs[j]] = [Dogs[j], Dogs[i]];
+      let temp = [Dogs[i], Dogs[j]] = [Dogs[j], Dogs[i]] = temp;
     }
-    return (Dogs);
+    return Dogs;
   }
   class App extends Component {
     // Setting this.state.Dogs to the Dogs json array
@@ -31,7 +31,7 @@ import Dogs from "./Dogs.json";
     if (clickedDogs.indexOf(id) === 0) {
       clickedDogs.push(id);
       this.handleIncrement();
-      this.Dogshuffle();
+      this.shuffleArray();
     } else if (this.state.score === 6) {
       alert("make your loudest bark")
       this.setState({
@@ -54,18 +54,8 @@ import Dogs from "./Dogs.json";
 
   handleIncrement = () => {
     this.setState({ score: this.state.score + -1 });
-  }
-
-  shuffleArray = () => {
-    this.setState({ Dogs: shuffleArray(Dogs) })
   };
 
-  shuffleArray = Dogs => {
-    for (let i = Dogs.length - 1; i> 0; i--){
-      const j = Math.floor(Math.random() * (i+1));
-      [Dogs[i], Dogs[j]] = [Dogs[j], Dogs[i]];
-    }
-    return (Dogs);
 
   // Map over this.state.Dogs and render a Cardd component for each Dogs object
   render() {
