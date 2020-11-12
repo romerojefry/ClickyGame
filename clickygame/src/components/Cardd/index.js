@@ -3,8 +3,13 @@ import "./style.css";
 
 function Cardd(props) {
   return (
-   console
+   <div className="card" onClick={() => props.getDogs(prop.id)} className="get">
+    <div className="img-container">
+      <img alt={props.id} src={props.image} />
+    </div>
+
+   </div>
   );
 }
 
-export default FriendCard;
+export default Cardd;
