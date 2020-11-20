@@ -3,9 +3,9 @@ import "./style.css";
 
 const Cardd = props => {
 
-   <div className="card" onClick={() => props.clickedDogs(props.id)} className="get">
+   return <div className="card" onClick={() => props.clickedDogs(props.id)} className="get">
     <div className="img-container">
-      <img alt={props.id} src={props.image} />
+    <img alt={props.id} src={props.image} />
     </div>
 
    </div>
